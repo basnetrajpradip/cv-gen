@@ -27,23 +27,36 @@ input {
   border-radius: 10px;
 }
 
+textarea {
+  width: 30rem;
+  resize: none;
+  padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+  font-size: 1.2rem;
+  border: none;
+  background-color: var(--secondary);
+  border-radius: 10px;
+}
+
 label > div {
   font-size: 1.2rem;
   font-weight: 600;
 }
 
-#eduForm {
+#eduForm,
+#expForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.edu-date {
+.edu-date,
+.exp-date {
   display: flex;
   gap: 1rem;
 }
 
-.edu-date input {
+.edu-date input,
+.exp-date input {
   width: 14rem;
 }
 
@@ -201,7 +214,8 @@ button svg {
   border: 1px solid var(--primary);
 }
 
-.add-education {
+.add-education,
+.add-experience {
   display: flex;
   justify-content: center;
 }

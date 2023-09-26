@@ -1,0 +1,21 @@
+@font-face {
+  font-family: bodyFont;
+  src: url(../assets/fonts/bodyFont.ttf);
+}
+
+:root {
+  --primary: #1e271f;
+  --secondary: #dce0dc;
+  --accent: #6f8073;
+  --background: #eff1ef;
+  --text: #111311;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--background);
+  font-size: 16px;
+  font-family: bodyFont;
+  box-sizing: border-box;
+}
