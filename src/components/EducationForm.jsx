@@ -1,8 +1,15 @@
 import { PropTypes } from "prop-types";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function EducationForm({ formDisplay, setFormDisplay, resumeInfo, setResumeInfo, eduFormValue, setEduFormValue, infoCounter, setInfoCounter }) {
   const [educationInfo, setEducationInfo] = useState({ ...eduFormValue });
+
+  const buttonRef = useRef();
+  function handleEnterKey(event) {
+    if (event.key === "Enter") {
+      buttonRef.current.click();
+    }
+  }
 
   function handleCancel(e) {
     e.preventDefault();
@@ -55,7 +62,7 @@ export default function EducationForm({ formDisplay, setFormDisplay, resumeInfo,
   }
 
   return (
-    <form id="eduForm">
+    <form id="eduForm" onKeyDown={handleEnterKey}>
       <label htmlFor="school">
         <div>School</div>
         <input type="text" placeholder="Enter School / University" id="school" value={educationInfo.school} onChange={updateSchool}></input>
@@ -92,7 +99,7 @@ export default function EducationForm({ formDisplay, setFormDisplay, resumeInfo,
           <button className="cancel" onClick={handleCancel}>
             Cancel
           </button>
-          <button type="submit" className="save" onClick={handleSave}>
+          <button ref={buttonRef} type="submit" className="save" onClick={handleSave}>
             Save
           </button>
         </div>

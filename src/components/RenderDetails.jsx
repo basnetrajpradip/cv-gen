@@ -49,8 +49,8 @@ function RenderEducationDetails({ resumeInfo }) {
   return (
     <div className="cv-education-details">
       {resumeInfo.education.length !== 0 && <div className="cv-section-header">Education</div>}
-      {resumeInfo.education.map((eduInfo, index) => (
-        <div className="education-info section-info" key={`${eduInfo.degree}${index}`}>
+      {resumeInfo.education.map((eduInfo) => (
+        <div className="education-info section-info" key={eduInfo.id}>
           <div className="info-left">
             <div className="date-info">{`${converDateFormat(eduInfo.startDate)} - ${converDateFormat(eduInfo.endDate)}`}</div>
             <div className="address-info">{`${eduInfo.location}`}</div>
@@ -65,56 +65,33 @@ function RenderEducationDetails({ resumeInfo }) {
   );
 }
 
+function RenderExperienceDetails({ resumeInfo }) {
+  return (
+    <div className="cv-experience-details">
+      {resumeInfo.experience.length !== 0 && <div className="cv-section-header">Professional Experience</div>}
+      {resumeInfo.experience.map((expInfo) => (
+        <div className="experience-info section-info" key={expInfo.id}>
+          <div className="info-left">
+            <div className="date-info">{`${converDateFormat(expInfo.startDate)} - ${converDateFormat(expInfo.endDate)}`}</div>
+            <div className="address-info">{`${expInfo.location}`}</div>
+          </div>
+          <div className="info-right">
+            <div className="organization-info">{`${expInfo.company}`}</div>
+            <div className="more-info">{`${expInfo.position}`}</div>
+            <div className="info-description">{`${expInfo.description}`}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function RenderDetails({ resumeInfo }) {
   return (
     <div className="render-container">
       <RenderPersonalDetails resumeInfo={resumeInfo}></RenderPersonalDetails>
       <RenderEducationDetails resumeInfo={resumeInfo}></RenderEducationDetails>
-      <div className="cv-experience-details">
-        <div className="cv-section-header">Professional Experience</div>
-        <div className="experience-info section-info">
-          <div className="info-left">
-            <div className="date-info">2018/04/12 - 2022/23/23</div>
-            <div className="address-info">Itahari, Sunsari</div>
-          </div>
-          <div className="info-right">
-            <div className="organization-info">Janata Garage</div>
-            <div className="more-info">SalesMan & Accountant</div>
-            <div className="info-description">
-              Designed and prototyped user interface patterns for various clients in various industries, ranging from self-service apps within the telecommunications-sector to mobile games for IOS and
-              Android
-            </div>
-          </div>
-        </div>
-        <div className="experience-info section-info">
-          <div className="info-left">
-            <div className="date-info">2018/04/12 - 2022/23/23</div>
-            <div className="address-info">Itahari, Sunsari</div>
-          </div>
-          <div className="info-right">
-            <div className="organization-info">Janata Garage</div>
-            <div className="more-info">SalesMan & Accountant</div>
-            <div className="info-description">
-              Designed and prototyped user interface patterns for various clients in various industries, ranging from self-service apps within the telecommunications-sector to mobile games for IOS and
-              Android
-            </div>
-          </div>
-        </div>
-        <div className="experience-info section-info">
-          <div className="info-left">
-            <div className="date-info">2018/04/12 - 2022/23/23</div>
-            <div className="address-info">Itahari, Sunsari</div>
-          </div>
-          <div className="info-right">
-            <div className="organization-info">Janata Garage</div>
-            <div className="more-info">SalesMan & Accountant</div>
-            <div className="info-description">
-              Designed and prototyped user interface patterns for various clients in various industries, ranging from self-service apps within the telecommunications-sector to mobile games for IOS and
-              Android
-            </div>
-          </div>
-        </div>
-      </div>
+      <RenderExperienceDetails resumeInfo={resumeInfo}></RenderExperienceDetails>
     </div>
   );
 }
@@ -129,3 +106,5 @@ const sharedPropTypes = {
 
 RenderPersonalDetails.propTypes = sharedPropTypes;
 RenderEducationDetails.propTypes = sharedPropTypes;
+
+RenderExperienceDetails.propTypes = sharedPropTypes;
